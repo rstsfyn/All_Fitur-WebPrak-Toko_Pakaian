@@ -1,0 +1,36 @@
+{% extends 'layouts/layout.html' %}
+
+{% block head %}
+<title>Halaman shop</title>
+{% endblock %}
+
+{% block body %}
+<div>
+  <div class="container">
+    <h2 class="mt-4">Featured Products</h2>
+    <div class="row mt-3">
+      {% for product in products %}
+      <div class="col-md-4">
+        <div class="card mt-4 mb-4">
+          <img
+            src="{{ url_for('static', filename='uploads/' + product[6]) }}"
+            class="card-img-top"
+            alt="Product Image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ product[2] }}</h5>
+            <p class="card-text">{{ product[3] }}</p>
+            <p class="card-text">Harga: {{ product[4] }}</p>
+            <a
+              href="{{ url_for('product_detail', product_id=product[0]) }}"
+              class="btn btn-primary"
+              >View Details</a
+            >
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
